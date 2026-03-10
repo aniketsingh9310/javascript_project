@@ -1,45 +1,35 @@
 
-function get_todos () {
-    let todos = []
-    let todos_str = localStorage.getItem('todo')
-    if(todos_str !== null){
-        todos = JSON.parse(todos_str)
-    }
-   
+let input = document.querySelector("input")
+let btn = document.querySelector("button")
+let showTodos = document.querySelector("#todos")
 
-    console.log('todos data in localstorage',todos_str)
-    console.log('todos data in js array ',todos)
+//    input.addEventListener("input",function(dets){
+//         console.log(dets.target.value)
+//    })
 
-    return todos;
-}
+   btn.addEventListener("click",function(dets){
+      localStorage.setItem("task",input.value)
+      let ls = localStorage.getItem("task")
+        console.log(ls)
+        
 
-function add_todo (){
-    let task = document.getElementById('task').value
-    console.log('add data===>',task)
-    
+    //    console.log(input.value)
+        let todos = document.createElement("li")
+        todos.innerText = input.value 
+        // console.log(todos)
 
-    let todos = get_todos()
-    todos.push(task)
-    localStorage.setItem('todo',JSON.stringify(todos))
-    show()
+        let deletebtn = document.createElement("button")
+        deletebtn.classList.add("remove")
+        deletebtn.innerText = "x"
+        // console.log(deletebtn)
 
-    return
-}
+        deletebtn.addEventListener("click",function(){
+            todos.remove()
+        })
 
-function remove (){
+        todos.appendChild(deletebtn)     
+        showTodos.appendChild(todos)   
+      
+        input.value = ""
 
-}
-
-
-function show () {
-    let todos = get_todos()
-    let html = '<ul>'
-    for(let i = 0; i < todos.length; i++){
-        html += '<li>' + todos[i] + '<button class="romove" id"'+ i + '">Delete</button> </li>'
-    }
- console.log(html)
- document.getElementById('todos').innerHTML =html
-}
-
-document.getElementById('add').addEventListener('click',add_todo)
-
+   })   
