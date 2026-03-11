@@ -2,6 +2,7 @@
 let input = document.querySelector("input")
 let btn = document.querySelector("button")
 let showTodos = document.querySelector("#todos")
+console.log(showTodos)
 
 //    input.addEventListener("input",function(dets){
 //         console.log(dets.target.value)
