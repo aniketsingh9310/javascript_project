@@ -7,7 +7,7 @@ buttons.forEach(function(btn){
             let value = btn.innerText
             console.log(value)
         if (value === "C"){
-            display.value = "0"
+            display.value = ""
         }
         else if(value === "="){
             display.value = eval(display.value)
